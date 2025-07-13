@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aulas</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="img/icone.png" />
+  </head>
+  <body id="topo">
+    <header class="header-aulas">
+      <div class="header-aulas-top">
+        <a href="javascript:history.back()" class="back-button">
+          <img src="img/voltar_icone.png" alt="Voltar" />
+        </a>
+
+        <h1 id="aulaTitulo">Aulas</h1>
+
+        <a class="search-button" id="abrirBusca">
+          <img src="img/search_icon.png" alt="Buscar" />
+        </a>
+      </div>
+
+      <div id="buscaWrapper" style="display: none">
+        <input
+          type="text"
+          id="buscaAula"
+          placeholder="Buscar aula..."
+          class="input-busca"
+        />
+      </div>
+
+      <div class="tabs">
+        <a href="aulas.html" class="tab-button" data-tab="todos">Todos</a>
+        <a href="favoritos.html" class="tab-button" data-tab="favoritos"
+          >Favoritos</a
+        >
+      </div>
+    </header>
+
+    <main class="main-content-aulas">
+      <div id="todosAulas" class="aula-list active"></div>
+    </main>
+
+    <footer class="custom-footer">
+      <hr class="footer-divider" />
+      <div class="footer-container">
+        <p class="footer-text">
+          &copy; Desenvolvido pelos alunos Felipe, Gabriel, Mauricio e Guilherme
+          &middot;
+        </p>
+        <p><a href="#topo" class="footer-link">Voltar ao topo</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const url = new URL(window.location.href);
+      const courseId = url.searchParams.get("cursoId");
+
+      async function fetchLessonsByCourseId(courseId) {
+        console.log(courseId);
+
+        const response = await fetch(
+          `https://laboratorio-maker-ruddy.vercel.app/api/lessons?course_id=${courseId}`
+        );
+
+        const lessons = await response.json();
+
+        const lessonsListContainer = document.getElementById("todosAulas");
+
+        for (let lesson of lessons) {
+          const lessonContainer = document.createElement("a");
+          lessonContainer.href = `aula.html?id=${lesson.id}`;
+          lessonContainer.className = "aula-item";
+
+          const thumb = document.createElement("div");
+          thumb.className = "aula-thumb";
+
+          const infoContainer = document.createElement("div");
+          infoContainer.className = "aula-info";
+
+          const lessonTitle = document.createElement("h3");
+          lessonTitle.className = "aula-title";
+          lessonTitle.innerHTML = `Aula ${lesson.id}`;
+
+          const lessonDescription = document.createElement("p");
+          lessonDescription.className = "aula-description";
+          lessonDescription.innerHTML = lesson.titulo;
+
+          infoContainer.appendChild(lessonTitle);
+          infoContainer.appendChild(lessonDescription);
+
+          lessonContainer.appendChild(thumb);
+          lessonContainer.appendChild(infoContainer);
+
+          lessonsListContainer.appendChild(lessonContainer);
+
+          // <a href="aula6.html" class="aula-item" data-nome="Aula 6">
+          //   <div class="aula-thumb"></div>
+          //   <div class="aula-info">
+          //     <h3 class="aula-title">Aula 6</h3>
+          //     <p class="aula-description">
+          //       Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          //     </p>
+          //   </div>
+          // </a>
+        }
+      }
+
+      fetchLessonsByCourseId(courseId);
+    </script>
+  </body>
+</html>

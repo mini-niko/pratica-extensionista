@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menu Principal - Protótipo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="img/icone.png" />
+  </head>
+  <body id="topo">
+    <nav class="menu">
+      <div class="menu-top">
+        <div class="profile-icon"></div>
+        <div class="profile-info">
+          <h2 class="profile-name">Lorem Ipsum</h2>
+          <p class="profile-status">Lorem Ipsum</p>
+        </div>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="buscaCursoIdeia" placeholder="Buscar..." />
+      </div>
+    </nav>
+
+    <div class="content">
+      <h3 class="carousel-title">Cursos em Destaque</h3>
+      <div class="carrossel" id="cursosCarrossel"></div>
+
+      <h3 class="carousel-title" class="aulas.html">Ideias</h3>
+      <div class="carrossel" id="ideiasCarrossel"></div>
+    </div>
+
+    <footer class="custom-footer">
+      <hr class="footer-divider" />
+      <div class="footer-container">
+        <p class="footer-text">
+          &copy; Desenvolvido pelos alunos Felipe, Gabriel, Mauricio e Guilherme
+          &middot;
+        </p>
+        <p><a href="#topo" class="footer-link">Voltar ao topo</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      async function getAllCourses() {
+        const cursosCarrossel = document.getElementById("cursosCarrossel");
+
+        const response = await fetch(
+          "https://laboratorio-maker-ruddy.vercel.app/api/courses"
+        );
+
+        if (!response.ok) throw new Error();
+
+        const cursos = await response.json();
+
+        for (let curso of cursos) {
+          const cursoDiv = document.createElement("a");
+          cursoDiv.href = `/aulas.html?cursoId=${curso.id}`;
+          cursoDiv.classList.add("curso");
+
+          cursoDiv.dataset.nome = curso.nome;
+
+          const img = document.createElement("img");
+          img.src = "img/play_icon.png";
+          img.alt = curso.nome;
+
+          const spanNome = document.createElement("span");
+          spanNome.textContent = curso.nome;
+
+          cursoDiv.appendChild(img);
+          cursoDiv.appendChild(spanNome);
+
+          cursosCarrossel.appendChild(cursoDiv);
+        }
+      }
+
+      async function getAllIdeas() {
+        const ideiasCarrossel = document.getElementById("ideiasCarrossel");
+
+        const response = await fetch(
+          "https://laboratorio-maker-ruddy.vercel.app/api/ideas"
+        );
+
+        if (!response.ok) throw new Error();
+
+        const ideias = await response.json();
+
+        for (let ideia of ideias) {
+          const ideiaDiv = document.createElement("a");
+          ideiaDiv.href = `/ideia.html?ideiaId=${ideia.id}`;
+          ideiaDiv.classList.add("ideia");
+
+          ideiaDiv.dataset.nome = ideia.titulo;
+
+          const img = document.createElement("img");
+          img.src = "img/play_icon.png";
+          img.alt = ideia.titulo;
+
+          const spanNome = document.createElement("span");
+          spanNome.textContent = ideia.titulo;
+
+          ideiaDiv.appendChild(img);
+          ideiaDiv.appendChild(spanNome);
+
+          ideiasCarrossel.appendChild(ideiaDiv);
+        }
+      }
+
+      getAllCourses();
+      getAllIdeas();
+    </script>
+  </body>
+</html>

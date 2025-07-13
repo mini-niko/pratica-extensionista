@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favoritos</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="img/icone.png" />
+</head>
+<body id ="topo">
+  <header class="header-aulas">
+    <div class="header-aulas-top">
+      <a href="javascript:history.back()" class="back-button">
+        <img src="img/voltar_icone.png" alt="Voltar">
+      </a>
+      <h1 id="aulaTitulo">Aulas</h1>
+          
+      <a class="search-button" id="abrirBusca">
+        <img src="img/search_icon.png" alt="Buscar">
+      </a>
+    </div>
+
+    
+    <div id="buscaWrapper" style="display: none;">
+      <input type="text" id="buscaAula" placeholder="Buscar aula..." class="input-busca" />
+    </div>
+    
+    </div>
+    <div class="tabs">
+      <a href="aulas.html" class="tab-button" data-tab="todos">Todos</a>
+      <a href="favoritos.html" class="tab-button" data-tab="favoritos">Favoritos</a>
+    </div>
+  </header>
+
+  <main class="sem-favoritos">
+    <h3>No momento você não tem aulas favoritadas!</h3>
+  </main>
+
+    <footer class="custom-footer">
+  <hr class="footer-divider" />
+  <div class="footer-container">
+    <p class="footer-text">
+      &copy; Desenvolvido pelos alunos Felipe, Gabriel, Mauricio e Guilherme &middot;
+    </p>
+    <p><a href="#topo" class="footer-link">Voltar ao topo</a></p>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
