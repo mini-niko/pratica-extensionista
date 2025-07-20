@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contato com os Desenvolvedores</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="img/icone.png" />
+  </head>
+  <body id="topo">
+    <nav class="menu">
+      <div class="menu-top">
+        <div class="profile-icon"></div>
+        <div class="profile-info">
+          <h2 class="profile-name">Lorem Ipsum</h2>
+          <p class="profile-status">Lorem Ipsum</p>
+        </div>
+      </div>
+    </nav>
+    <main class="contact-content">
+      <h3 class="carousel-title">Formulário de Contato</h3>
+
+      <form
+        class="container-index"
+        style="max-width: 600px"
+        action="mailto:seuemail@exemplo.com"
+        method="post"
+        enctype="text/plain"
+      >
+        <label for="nome">Nome:</label>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          placeholder="Seu nome"
+          required
+        />
+
+        <label for="email">E-mail:</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="seuemail@exemplo.com"
+          required
+        />
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea
+          id="mensagem"
+          name="mensagem"
+          rows="6"
+          placeholder="Digite sua mensagem aqui..."
+          required
+          style="
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+          "
+        ></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <section style="margin-top: 50px">
+        <h3 class="carousel-title">Desenvolvedores</h3>
+        <ul style="list-style: none; padding-left: 0">
+          <li><strong>Felipe</strong> – felipe@email.com</li>
+          <li><strong>Gabriel</strong> – gabriel@email.com</li>
+          <li><strong>Mauricio</strong> – mauricio@email.com</li>
+          <li><strong>Guilherme</strong> – guilherme@email.com</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="custom-footer">
+      <hr class="footer-divider" />
+      <div class="footer-container">
+        <p class="footer-text">
+          &copy; Desenvolvido pelos alunos Felipe, Gabriel, Mauricio e Guilherme
+        </p>
+        <p>
+          <a href="#topo" class="footer-link">Voltar ao topo</a>
+        </p>
+      </div>
+    </footer>
+    <script src="script.js" />
+  </body>
+</html>
