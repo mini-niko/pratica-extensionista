@@ -1,5 +1,7 @@
 # Laboratório Maker
 
+Caso queira acessar o projeto, [clique aqui](https://laboratorio-maker-ruddy.vercel.app/) para acessar o projeto público.
+
 ## Participantes
 
 Este projeto foi desenvolvido pelos alunos:
