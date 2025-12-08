@@ -6,6 +6,8 @@
   <title>Favoritos</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="img/icone.png" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
 </head>
 <body id ="topo">
   <header class="header-aulas">
@@ -47,5 +49,36 @@
 </footer>
 
   <script src="script.js"></script>
-</body>
+
+  <footer class="custom-footer">
+  </footer>
+
+<script src="script.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const cursoId = urlParams.get('cursoId');
+    
+   
+    const btnTodos = document.querySelector('a[data-tab="todos"]');
+
+    if (btnTodos) {
+      if (cursoId) {
+       
+        btnTodos.href = `aulas.html?cursoId=${cursoId}`;
+      } else {
+       
+        btnTodos.href = "menu.html";
+      }
+    }
+  });
+  </script>
+        <div id="loader" class="loading-overlay">
+          <div class="spinner"></div>
+        </div>
+      </body>
+    </html>
+  </body>
 </html>
