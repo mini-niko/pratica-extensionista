@@ -15,6 +15,10 @@ Este projeto foi desenvolvido pelos alunos:
 
 Para saber como o projeto roda em produção, [clique aqui](INFRASTRUCTURE.md)
 
+## Endpoints
+
+Para saber quais são os endpoints da aplicação, e como utilizá-las, [clique aqui](/docs/endpoints/README.md)
+
 ## Como Rodar o Projeto
 
 ### Pré-requisitos
