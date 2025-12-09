@@ -32,26 +32,20 @@ function setupLoginForm() {
       return;
     }
 
-    
     showLoading();
 
     try {
-      const response = await fetch(
-        `https://laboratorio-maker-ruddy.vercel.app/api/users?email=${email}&senha=${senha}`
-      );
+      const response = await fetch(`/api/users?email=${email}&senha=${senha}`);
 
-      
       hideLoading();
 
       if (response.status !== 200) {
         const body = await response.json();
         msgErro.textContent = body.error;
 
-        
         emailInput.classList.add("input-erro");
         senhaInput.classList.add("input-erro");
 
-        
         setTimeout(() => {
           emailInput.classList.remove("input-erro");
           senhaInput.classList.remove("input-erro");
@@ -63,9 +57,7 @@ function setupLoginForm() {
       const user = await response.json();
       localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "menu.html";
-
     } catch (error) {
-      
       hideLoading();
       msgErro.textContent = "Erro de conexão. Tente novamente.";
     }
@@ -127,16 +119,14 @@ function setupAbaAulas() {
     button.addEventListener("click", (e) => {
       const target = button.dataset.tab;
 
-     
       if (
         target === "favoritos" &&
         window.location.pathname.endsWith("aulas.html")
       ) {
         e.preventDefault();
         window.location.href = "favoritos.html" + window.location.search;
-        return; 
+        return;
       }
-
 
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
@@ -149,8 +139,6 @@ function setupAbaAulas() {
     });
   });
 }
-
-
 
 function showLoading() {
   const loader = document.getElementById("loader");

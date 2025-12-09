@@ -5,8 +5,8 @@
     <title>Menu Principal - Protótipo</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="img/icone.png" />
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007bff">
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#007bff" />
   </head>
   <body id="topo">
     <nav class="menu">
@@ -51,9 +51,7 @@
       async function getAllCourses() {
         const cursosCarrossel = document.getElementById("cursosCarrossel");
 
-        const response = await fetch(
-          "https://laboratorio-maker-ruddy.vercel.app/api/courses"
-        );
+        const response = await fetch("/api/courses");
 
         if (!response.ok) throw new Error();
 
@@ -83,9 +81,7 @@
       async function getAllIdeas() {
         const ideiasCarrossel = document.getElementById("ideiasCarrossel");
 
-        const response = await fetch(
-          "https://laboratorio-maker-ruddy.vercel.app/api/ideas"
-        );
+        const response = await fetch("/api/ideas");
 
         if (!response.ok) throw new Error();
 
@@ -115,8 +111,8 @@
       getAllCourses();
       getAllIdeas();
     </script>
-      <div id="loader" class="loading-overlay">
-        <div class="spinner"></div>
-      </div>
+    <div id="loader" class="loading-overlay">
+      <div class="spinner"></div>
+    </div>
   </body>
 </html>

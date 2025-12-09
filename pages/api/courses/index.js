@@ -8,6 +8,7 @@ export default createRouter()
   .post(POST)
   .handler({
     onError: (err, _, res) => {
+      console.error("Error processing request:", err);
       res
         .status(400)
         .json({ error: err.message || "Erro ao processar requisição" });
@@ -15,8 +16,10 @@ export default createRouter()
   });
 
 async function GET(_, res) {
+  console.log("Fetching all courses");
   const coursesList = await courses.getAll();
 
+  console.log("Fetched courses:", coursesList);
   res.status(200).json(coursesList);
 }
 
