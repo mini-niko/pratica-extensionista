@@ -27,8 +27,8 @@ A aplicação Next.js foi empacotada em contêineres para:
 O deploy ocorre via Compose, facilitando versionamento e reprodutibilidade do ambiente.
 
 ### Estrutura de Arquivos
-Os arquivos de configuração da aplicação, Dockerfile e docker-compose.yml foram enviados para
-a instância via Git pull direto do repositório do projeto.
+Os arquivos de configuração da aplicação e docker-compose.yml foram enviados para
+a instância via git pull direto do repositório do projeto.
 
 ### Execução
 Após o build, os contêineres são iniciados em modo daemon.
