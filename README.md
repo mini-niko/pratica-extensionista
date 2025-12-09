@@ -1,6 +1,6 @@
 # Laboratório Maker
 
-Caso queira acessar o projeto, [clique aqui](https://laboratorio-maker-ruddy.vercel.app/) para acessar o projeto público.
+Caso queira acessar o projeto, [clique aqui](http://lab-maker.duckdns.org/index.html) para acessar o projeto público.
 
 ## Participantes
 
