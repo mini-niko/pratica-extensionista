@@ -4,24 +4,51 @@ import users from "models/users";
 export default createRouter()
   .use(setCORS)
   .get(GET)
+  .post(POST)
   .handler({
-    onError: (_, __, res) => {
-      res.status(401).json({ error: "Credenciais Incorretas." });
+    onError: (err, _, res) => {
+      res
+        .status(400)
+        .json({ error: err.message || "Erro ao processar requisição" });
     },
   });
 
 async function GET(req, res) {
-  const query = req.query;
+  const { email } = req.query;
 
-  const user = await users.getByEmail(query.email);
+  if (email) {
+    const user = await users.getByEmail(email);
+    return res.status(200).json(user);
+  }
 
-  if (user?.senha !== query.senha) throw new Error("Credenciais incorretas");
+  const usersList = await users.getAll();
+  res.status(200).json(usersList);
+}
 
-  res.status(200).json(user);
+async function POST(req, res) {
+  const { email, nome, senha } = req.body;
+
+  if (!email || !nome || !senha) {
+    return res
+      .status(400)
+      .json({ error: "Email, nome e senha são obrigatórios" });
+  }
+
+  const user = await users.create(email, nome, senha);
+  res.status(201).json(user);
 }
 
 async function setCORS(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
 
   return next();
 }

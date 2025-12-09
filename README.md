@@ -51,5 +51,8 @@ Dentro da pasta `docs/`, terá as documentações do projeto e apresentação:
       ├── apresentacao.pptx
       ├── parte-1
       │     └── (diagramas da entrega parcial)
-      └── parte-2
-            └── (diagramas da entrega final)
+      ├── parte-2
+      │     └── (diagramas da entrega final)
+      └── endpoints
+            ├── README.md
+            └── (arquivos Markdown com a documentação dos enpoints)
