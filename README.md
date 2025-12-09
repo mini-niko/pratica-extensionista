@@ -11,6 +11,10 @@ Este projeto foi desenvolvido pelos alunos:
     Felipe Luiz Cieslick
     Gabriel Mazochi
 
+## Infraestrutura
+
+Para saber como o projeto roda em produção, [clique aqui](INFRASTRUCTURE.md)
+
 ## Como Rodar o Projeto
 
 ### Pré-requisitos
