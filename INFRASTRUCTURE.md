@@ -7,18 +7,23 @@ hospedagem. A infraestrutura foi planejada para suportar uma aplicação full st
 em Next.js, organizada em contêineres Docker para padronização, isolamento e portabilidade.
 
 ### Instância EC2
-Foi criada uma instância EC2 rodando Linux (Amazon Linux 2 ou Ubuntu LTS), escolhida por sua
-estabilidade, suporte e compatibilidade com o ecossistema Docker. A instância utiliza
-armazenamento EBS e está configurada com acesso via chave SSH.
+Foi criada uma instância EC2 rodando Linux (Ubuntu LTS), escolhida por sua
+estabilidade, suporte e compatibilidade com o ecossistema Docker. A instância está configurada com acesso via chave SSH.
 
 ### Segurança e Rede
-Um Security Group foi configurado permitindo apenas:- Porta 22 (SSH), limitada ao IP da equipe.- Porta 80/443 para acesso público à aplicação.
+Um Security Group foi configurado permitindo apenas:
+- Porta 22 (SSH), limitada ao IP da equipe.
+- Porta 80/443 para acesso público à aplicação.
 A VPC padrão foi utilizada, com sub-rede pública para facilitar a exposição da aplicação na
 internet.
 
 ### Docker e Deploy
 A instância EC2 recebeu a instalação do Docker Engine e Docker Compose.
-A aplicação Next.js foi empacotada em contêineres para:- Serviço web (Next.js)- Backend/API (separado, caso aplicável)- Banco de dados (somente se necessário; em ambiente de produção, recomenda-se RDS)
+A aplicação Next.js foi empacotada em contêineres para:
+
+- Serviço web (Next.js)
+- Banco de dados
+
 O deploy ocorre via Compose, facilitando versionamento e reprodutibilidade do ambiente.
 
 ### Estrutura de Arquivos
@@ -29,7 +34,6 @@ a instância via Git pull direto do repositório do projeto.
 Após o build, os contêineres são iniciados em modo daemon.
 A aplicação fica disponível via IP público da EC2.
 
-### Observações Operacionais**
-
+### Observações Operacionais
 - Logs são centralizados via Docker.
 - Atualizações do app exigem novo build e restart dos contêineres.
